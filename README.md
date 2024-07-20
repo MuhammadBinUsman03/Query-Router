@@ -19,7 +19,7 @@ It is based on a [KNN router by PulzeAI](https://github.com/pulzeai-oss/knn-rout
 
 Setup procedure for the embedding based router is given next.
 ## Fine-tuning the embedding model
-We will fine-tune our own [router-embedding](https://huggingface.co/Muhammad2003/router-embedding) model based on [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5/tree/main) on the above mentioned routing dataset. The embedding fine-tuning is shown in the [`Embed_FineTune.ipynb`](https://github.com/MuhammadBinUsman03/Query-Router/blob/main/Embed_FineTune.ipynb) where we leverage [SentenceTransformers](https://www.sbert.net/index.html) training our embedding model with loss function `BatchAllTripletLoss`. The training progress is logged on [WandB](https://wandb.ai/home):
+We will fine-tune our own [router-embedding](https://huggingface.co/Muhammad2003/router-embedding) model based on [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5/tree/main) on the above mentioned routing dataset. The embedding fine-tuning is shown in the [`Embed_FineTune.ipynb`](https://github.com/MuhammadBinUsman03/Query-Router/blob/main/Embed_FineTune.ipynb) where we leverage [SentenceTransformers](https://www.sbert.net/index.html) training our embedding model with loss function `BatchAllTripletLoss`. The training progress is logged on [WandB](https://wandb.ai/rethinkai/embed/runs/hcd9zwec?nw=nwusermuhammadbin2003):
 
 ![image](https://github.com/user-attachments/assets/b4f61af6-9080-47e0-84a7-c0dc7fb9e1db)
 
