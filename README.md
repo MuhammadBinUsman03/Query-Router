@@ -1,14 +1,14 @@
 # 🔀 Query-Router 
-Dynamically routes incoming model requests to appropriate LLM based on their varying complexities, thus optimizing response retrieval (by prompting the sufficient model) and saving costs (by not consecutively inferencing larger sized models). Routing can be guided by a [dataset](https://github.com/MuhammadBinUsman03/Query-Router?tab=readme-ov-file#routing-dataset-) for your own use-case and then two routing strategies are provided:
+Dynamically routes incoming model requests to appropriate LLM based on their varying complexities, thus optimizing response retrieval (by prompting the sufficient model) and saving costs (by not consecutively inferencing larger-sized models). Routing can be guided by a [dataset](https://github.com/MuhammadBinUsman03/Query-Router?tab=readme-ov-file#routing-dataset-) for your own use-case and then two routing strategies are provided:
 - [Embedding Based Router](https://github.com/MuhammadBinUsman03/Query-Router?tab=readme-ov-file#embedding-based-router-) - Deployed on AWS
 - [Classification Based Router](https://github.com/MuhammadBinUsman03/Query-Router?tab=readme-ov-file#classification-based-router-)
 
-The comparisons of both strategies is [here.](https://github.com/MuhammadBinUsman03/Query-Router?tab=readme-ov-file#comparison-)
+The comparison of both strategies is [here.](https://github.com/MuhammadBinUsman03/Query-Router?tab=readme-ov-file#comparison-)
 
 ![queryroute](https://github.com/user-attachments/assets/3e581f3e-2eb9-4fe8-8834-d578127b2f54)
 
 ## 📑 Routing Dataset
-You can curate your own dataset for your use-case. However, a ~15K [sample dataset](https://huggingface.co/datasets/Muhammad2003/routing-dataset) has been uploaded on 🤗HuggingFace, mapping each query to approrpriate model (3B, 7B, 30B, 70B).
+You can curate your own dataset for your use case. However, a ~15K [sample dataset](https://huggingface.co/datasets/Muhammad2003/routing-dataset) has been uploaded on 🤗HuggingFace, mapping each query to the appropriate model (3B, 7B, 30B, 70B).
 ![image](https://github.com/user-attachments/assets/d3269a32-ffe4-4f76-b0d6-8f627544a7d5)
 
 # 🛢️ Embedding Based Router
@@ -61,7 +61,7 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
 ```
-Also install Go-lang on the instance.
+Also, install Go-lang on the instance.
 ```bash
 sudo apt install golang-go
 go version
@@ -72,7 +72,7 @@ Clone the KNN-router repository.
 git clone https://github.com/pulzeai-oss/knn-router.git
 cd knn-router/deploy/pulze-intent-v0.1
 ```
-Install few more dependencies and and authenticate you HF account with `--token`
+Install a few more dependencies and authenticate your HF account with `--token`
 ```bash
 pip install transformers huggingface_hub
 huggingface-cli login --token ''
@@ -185,7 +185,7 @@ A simple but ineffective alternative is to train a text classifier on the same d
 ![image](https://github.com/user-attachments/assets/0503e1cf-da7e-4041-a8b3-afacd937377a)
 
 # Comparison
-Overall classifier may be effecive in outputs but incurs greater inference/storage costs and has high latency, meanwhile embedding router are cosst effective and has faster-response times thus more suitable for large scale systems.
+Overall classification routers may be effective in outputs but incurs greater inference/storage costs and have high latency, meanwhile embedding routers are cost-effective and have faster-response times thus more suitable for large-scale systems.
 | Aspect                 | Tiny LLaMA Classifier                                      | Embedded KNN Router                                  |
 |------------------------|-------------------------------------------------|-----------------------------------------------------|
 | Inference Cost         | High (4-5 GB model size)                        | Low (~500 MB model size)                            |
