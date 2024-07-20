@@ -1,9 +1,9 @@
 # 🔀 Query-Router 
 Dynamically routes incoming model requests to appropriate LLM based on their varying complexities, thus optimizing response retrieval (by prompting the sufficient model) and saving costs (by not consecutively inferencing larger-sized models). Routing can be guided by a [dataset](https://github.com/MuhammadBinUsman03/Query-Router?tab=readme-ov-file#routing-dataset-) for your own use-case and then two routing strategies are provided:
-- [Embedding Based Router](https://github.com/MuhammadBinUsman03/Query-Router?tab=readme-ov-file#embedding-based-router-) - Deployed on AWS
-- [Classification Based Router](https://github.com/MuhammadBinUsman03/Query-Router?tab=readme-ov-file#classification-based-router-)
+- [Embedding Based Router](https://github.com/MuhammadBinUsman03/Query-Router/tree/main?tab=readme-ov-file#%EF%B8%8F-embedding-based-router) - Deployed on AWS
+- [Classification Based Router](https://github.com/MuhammadBinUsman03/Query-Router/tree/main?tab=readme-ov-file#classification-based-router)
 
-The comparison of both strategies is [here.](https://github.com/MuhammadBinUsman03/Query-Router?tab=readme-ov-file#comparison-)
+The comparison of both strategies is [here.](https://github.com/MuhammadBinUsman03/Query-Router/tree/main?tab=readme-ov-file#comparison)
 
 ![queryroute](https://github.com/user-attachments/assets/3e581f3e-2eb9-4fe8-8834-d578127b2f54)
 
