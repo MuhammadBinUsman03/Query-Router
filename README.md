@@ -182,7 +182,8 @@ RESPONSE
 
 # Classification Based Router
 A simple but ineffective alternative is to train a text classifier on the same data to output the correct label/class for the appropriate model given an input query. [`TinyLlama_RouterClassifier.ipynb`](https://github.com/MuhammadBinUsman03/Query-Router/blob/main/TinyLlama_RouterClassifier.ipynb) guides fine-tuning [TinyLlama/TinyLlama-1.1B-Chat-v0.6](https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v0.6) on the routing dataset for classification task.
-![image](https://github.com/user-attachments/assets/0503e1cf-da7e-4041-a8b3-afacd937377a)
+![image](https://github.com/user-attachments/assets/314e0166-cc01-427a-aa67-e61b25d6d2fd)
+
 
 # Comparison
 Overall classification routers may be effective in outputs but incurs greater inference/storage costs and have high latency, meanwhile embedding routers are cost-effective and have faster-response times thus more suitable for large-scale systems.
