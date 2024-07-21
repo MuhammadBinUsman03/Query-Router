@@ -5,6 +5,8 @@ Dynamically routes incoming model requests to appropriate LLM based on their var
 
 The comparison of both strategies is [here.](https://github.com/MuhammadBinUsman03/Query-Router/tree/main?tab=readme-ov-file#comparison)
 
+Also, check out the [🤗HF-Collection](https://huggingface.co/collections/Muhammad2003/query-router-669c19db8f2dbc203f7a7af4)
+
 ![queryroute](https://github.com/user-attachments/assets/3e581f3e-2eb9-4fe8-8834-d578127b2f54)
 
 ## 📑 Routing Dataset
@@ -12,35 +14,35 @@ You can curate your own dataset for your use case. However, a ~15K [sample datas
 ![image](https://github.com/user-attachments/assets/d3269a32-ffe4-4f76-b0d6-8f627544a7d5)
 
 # 🛢️ Embedding Based Router
-It is based on a [KNN router by PulzeAI](https://github.com/pulzeai-oss/knn-router/tree/main) which is a Go-Server that generates a ranked target list for a query based on its K-Nearest Neighbors. Additionally, we fine-tune our own [Embedding model](https://huggingface.co/Muhammad2003/router-embedding) based on [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5/tree/main) on the above mentioned routing dataset. Then after generating deployment artifacts as described below, the routing server is deployed on an AWS-EC2 instance.
+It is based on a [KNN router by PulzeAI](https://github.com/pulzeai-oss/knn-router/tree/main) which is a Go-Server that generates a ranked target list for a query based on its K-Nearest Neighbors. Additionally, we fine-tune our own [Embedding model](https://huggingface.co/Muhammad2003/router-embedding) based on [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5/tree/main) on the above-mentioned routing dataset. Then after generating deployment artifacts as described below, the routing server is deployed on an AWS-EC2 instance.
 
 ![EmbedRouter](https://github.com/user-attachments/assets/0e4b2a72-fa15-428f-9a76-246c9f43cd89)
 
 
-Setup procedure for the embedding based router is given next.
+Next, the setup procedure for the embedding-based router is given.
 ## Fine-tuning the embedding model
-We will fine-tune our own [router-embedding](https://huggingface.co/Muhammad2003/router-embedding) model based on [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5/tree/main) on the above mentioned routing dataset. The embedding fine-tuning is shown in the [`Embed_FineTune.ipynb`](https://github.com/MuhammadBinUsman03/Query-Router/blob/main/Embed_FineTune.ipynb) where we leverage [SentenceTransformers](https://www.sbert.net/index.html) training our embedding model with loss function `BatchAllTripletLoss`. The training progress is logged on [WandB](https://wandb.ai/rethinkai/embed/runs/hcd9zwec?nw=nwusermuhammadbin2003):
+We will fine-tune our own [router-embedding](https://huggingface.co/Muhammad2003/router-embedding) model based on [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5/tree/main) on the above-mentioned routing dataset. The embedding fine-tuning is shown in the [`Embed_FineTune.ipynb`](https://github.com/MuhammadBinUsman03/Query-Router/blob/main/Embed_FineTune.ipynb) where we leverage [SentenceTransformers](https://www.sbert.net/index.html) training our embedding model with loss function `BatchAllTripletLoss`. The training progress is logged on [WandB](https://wandb.ai/rethinkai/embed/runs/hcd9zwec?nw=nwusermuhammadbin2003):
 
 ![image](https://github.com/user-attachments/assets/b4f61af6-9080-47e0-84a7-c0dc7fb9e1db)
 
 ### Points & Targets Dependencies
-To generate deployment artifacts, we need following dependencies:
+To generate deployment artifacts, we need the following dependencies:
 - `points.jsonl`: JSONL-formatted file containing points and their respective categories and embeddings. Each line should contain the following fields: `point_uid`, `category`, and `embedding`.
 - `targets.jsonl`: JSONL-formatted file containing the targets and their respective scores for each point. Each line should contain the following fields: `point_uid`, `target`, and `score`.
 
-The [`PointsAndTargets.ipynb`](https://github.com/MuhammadBinUsman03/Query-Router/blob/main/PointsAndTargets.ipynb) can generate these dependencies from our above fine-tuned embedding model and routing dataset, feel free to edit the functions accordignly if your dataset labels are different. After generating push these files to the same embedding model repository on Hub.
+The [`PointsAndTargets.ipynb`](https://github.com/MuhammadBinUsman03/Query-Router/blob/main/PointsAndTargets.ipynb) can generate these dependencies from our above fine-tuned embedding model and routing dataset, feel free to edit the functions accordingly if your dataset labels are different. After generating push these files to the same embedding model repository on Hub.
 
 ## Deployment on AWS-EC2
-Navigate to AWS-EC2 Dashboard, launch an EC2 with Ubuntu-OS and 30GB Disk Volume (to avoid disk space shortage/Instance freezing up) and remaining default configurations which are all suitable under the free tier. Let's setup all the dependencies.
+Navigate to AWS-EC2 Dashboard, launch an EC2 with Ubuntu-OS and 30GB Disk Volume (to avoid disk space shortage/Instance freezing up) and remaining default configurations which are all suitable under the free tier. Let's set up all the dependencies.
 
-Now setup a Python Virtual Environment.
+Now set up a Python Virtual Environment.
 ```bash
 sudo apt update
 sudo apt install python3.12-venv
 python3 -m venv .venv
 source .venv/bin/activate
 ```
-Let's install and setup Docker on the EC2.
+Let's install and set up Docker on the EC2.
 ```bash
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc
 do
