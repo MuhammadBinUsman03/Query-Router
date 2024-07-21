@@ -200,4 +200,9 @@ Overall classification routers may be effective in outputs but incurs greater in
 | Scalability            | Challenging due to high resource demands and costs | Easily scalable, suitable for rapid scaling         |
 
 
-
+## 📫 Get in Touch
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=fff)](https://www.linkedin.com/in/muhammad-bin-usman/)
+[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-FFD21E?logo=huggingface&logoColor=000)](https://huggingface.co/Muhammad2003)
+[![Medium](https://img.shields.io/badge/Medium-%23000000.svg?logo=medium&logoColor=white)](https://medium.com/@muhammadbinusman03)
+[![X](https://img.shields.io/badge/X-%23000000.svg?logo=X&logoColor=white)](https://x.com/Muhamma97033716)
+[![Substack](https://img.shields.io/badge/Substack-FF6719?logo=substack&logoColor=fff)](https://substack.com/@rethinkai)
